@@ -9,8 +9,8 @@ abstract class DaySolver(val filePath: String) {
     abstract fun solvePartOne(input: List<String>) : String
     abstract fun solvePartTwo(input: List<String>) : String
 
-    fun convertStringToNumberList(listStr: String): List<Long> {
-        return listStr.split(" ")
+    fun convertStringToNumberList(listStr: String, delimiters: String = " "): List<Long> {
+        return listStr.split(delimiters)
             .filter { !it.isEmpty() }
             .map { x -> x.toLong() }
     }
