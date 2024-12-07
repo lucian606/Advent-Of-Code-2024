@@ -1,12 +1,16 @@
 class Day7(filePath: String) : DaySolver(filePath) {
     override fun solvePartOne(input: List<String>): String {
-        return input.filter { isEquationSolveable(getTestValue(it), getNumbers(it), mutableMapOf(), "+*") }.fold(0L) {
+        val opMap = mutableMapOf<Int, List<String>>()
+
+        return input.filter { isEquationSolveable(getTestValue(it), getNumbers(it), opMap, "+*") }.fold(0L) {
             acc, line -> acc + getTestValue(line)
         }.toString()
     }
 
     override fun solvePartTwo(input: List<String>): String {
-        return input.filter { isEquationSolveable(getTestValue(it), getNumbers(it), mutableMapOf(), "+*|") }.fold(0L) {
+        val opMap = mutableMapOf<Int, List<String>>()
+
+        return input.filter { isEquationSolveable(getTestValue(it), getNumbers(it), opMap, "+*|") }.fold(0L) {
                 acc, line -> acc + getTestValue(line)
         }.toString()
     }
