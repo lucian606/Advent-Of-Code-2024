@@ -1,5 +1,3 @@
-typealias Point = Pair<Int, Int>
-
 class Day8(filePath: String) : DaySolver(filePath) {
     override fun solvePartOne(input: List<String>): String {
         val antennas = getAntennas(input)
@@ -13,17 +11,17 @@ class Day8(filePath: String) : DaySolver(filePath) {
         return antinodes.size.toString()
     }
 
-    fun getAntennas(input: List<String>): Map<Char, List<Point>> {
-        val antennas = mutableMapOf<Char, MutableList<Point>>()
+    fun getAntennas(input: List<String>): Map<Char, List<Cell>> {
+        val antennas = mutableMapOf<Char, MutableList<Cell>>()
 
         for (row in input.indices) {
             for (col in input[row].indices) {
                 if (input[row][col] != '.') {
                     val antenna = input[row][col]
                     if (antenna in antennas) {
-                        antennas[antenna]?.add(Point(row, col))
+                        antennas[antenna]?.add(Cell(row, col))
                     } else {
-                        antennas[antenna] = mutableListOf(Point(row, col))
+                        antennas[antenna] = mutableListOf(Cell(row, col))
                     }
                 }
             }
@@ -32,7 +30,7 @@ class Day8(filePath: String) : DaySolver(filePath) {
         return antennas
     }
 
-    fun getAntinodes(input: List<String>, antennas: Map<Char, List<Point>>, harmonicSignal: Boolean = false): Set<Cell> {
+    fun getAntinodes(input: List<String>, antennas: Map<Char, List<Cell>>, harmonicSignal: Boolean = false): Set<Cell> {
         val antinodes = mutableSetOf<Cell>()
 
         for (antennasList in antennas.values) {
@@ -61,16 +59,16 @@ class Day8(filePath: String) : DaySolver(filePath) {
         return antinodes
     }
 
-    fun Point.isOutOfBounds(maxRow: Int, maxCol: Int): Boolean {
+    fun Cell.isOutOfBounds(maxRow: Int, maxCol: Int): Boolean {
         return this.first < 0 || this.first >= maxRow || this.second < 0 || this.second >= maxCol
     }
 
-    fun Point.getDistance(other: Point): Point {
-        return Point(other.first - this.first, other.second - this.second)
+    fun Cell.getDistance(other: Cell): Cell {
+        return Cell(other.first - this.first, other.second - this.second)
     }
 
-    fun Point.add(other: Point): Point {
-        return Point(this.first + other.first, this.second + other.second)
+    fun Cell.add(other: Cell): Cell {
+        return Cell(this.first + other.first, this.second + other.second)
     }
 }
 

@@ -1,5 +1,7 @@
 import java.io.File
 
+typealias Cell = Pair<Int, Int>
+
 abstract class DaySolver(val filePath: String) {
     fun readInput(): List<String> {
         val file = File(filePath)

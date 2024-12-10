@@ -1,5 +1,3 @@
-typealias Cell = Pair<Int, Int>
-
 class Day6(filePath: String) : DaySolver(filePath) {
     val directions = listOf(Pair(-1, 0), Pair(0, 1), Pair(1, 0), Pair(0, -1))
 
