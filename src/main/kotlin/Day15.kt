@@ -2,18 +2,6 @@ typealias WarehouseMap = MutableList<MutableList<Char>>
 
 class Day15(filePath: String) : DaySolver(filePath) {
 
-    val directions = listOf(
-        Cell(-1, 0),
-        Cell(0, 1),
-        Cell(1, 0),
-        Cell(0, -1)
-    )
-
-    val NORTH = 0
-    val EAST = 1
-    val SOUTH = 2
-    val WEST = 3
-
     override fun solvePartOne(input: List<String>): String {
         val warehouseMap = getWarehouseMap(input)
         val movementsList = getMovementsList(input)

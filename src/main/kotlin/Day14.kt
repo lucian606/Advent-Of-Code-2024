@@ -1,31 +1,3 @@
-class Robot(var position: Cell,
-            val velocity: Cell,
-            val gridWidth: Int,
-            val gridHeight: Int) {
-    fun move() {
-        var (newX, newY) = position.add(velocity)
-        if (newX < 0) {
-            newX = gridWidth + newX
-        } else if (newX >= gridWidth) {
-            newX = newX - gridWidth
-        }
-
-        if (newY < 0) {
-            newY = gridHeight + newY
-        } else if (newY >= gridHeight) {
-            newY = newY - gridHeight
-        }
-
-        position = Cell(newX, newY)
-    }
-
-    @Override
-    override fun toString(): String {
-        return "p=$position, v=$velocity"
-    }
-}
-
-
 class Day14(filePath: String) : DaySolver(filePath) {
     override fun solvePartOne(input: List<String>): String {
         val gridWidth = 101
@@ -130,6 +102,30 @@ class Day14(filePath: String) : DaySolver(filePath) {
             }
             println()
         }
+    }
+}
+
+class Robot(var position: Cell, val velocity: Cell, val gridWidth: Int, val gridHeight: Int) {
+    fun move() {
+        var (newX, newY) = position.add(velocity)
+        if (newX < 0) {
+            newX = gridWidth + newX
+        } else if (newX >= gridWidth) {
+            newX = newX - gridWidth
+        }
+
+        if (newY < 0) {
+            newY = gridHeight + newY
+        } else if (newY >= gridHeight) {
+            newY = newY - gridHeight
+        }
+
+        position = Cell(newX, newY)
+    }
+
+    @Override
+    override fun toString(): String {
+        return "p=$position, v=$velocity"
     }
 }
 

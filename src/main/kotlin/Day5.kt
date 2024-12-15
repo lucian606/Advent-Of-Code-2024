@@ -1,5 +1,5 @@
-typealias Rule = Pair<Long, Long>
-typealias Update = List<Long>
+private typealias Rule = Pair<Long, Long>
+private typealias Update = List<Long>
 
 class Day5(filePath: String) : DaySolver(filePath) {
     override fun solvePartOne(input: List<String>): String {

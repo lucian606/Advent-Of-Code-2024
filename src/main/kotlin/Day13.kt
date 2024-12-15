@@ -1,6 +1,6 @@
 import java.lang.Math.*
 
-typealias Matrix = List<List<Long>>
+private typealias Matrix = List<List<Long>>
 
 class Day13(filePath: String) : DaySolver(filePath) {
     override fun solvePartOne(input: List<String>): String {

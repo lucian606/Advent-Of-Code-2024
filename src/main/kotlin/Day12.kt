@@ -1,22 +1,9 @@
 import java.util.LinkedList
 
-typealias Region = Set<Cell>
-typealias Fence = Pair<Cell, Int>
+private typealias Region = Set<Cell>
+private typealias Fence = Pair<Cell, Int>
 
 class Day12(filePath: String) : DaySolver(filePath) {
-
-    val directions = listOf(
-        Cell(-1, 0),
-        Cell(0, 1),
-        Cell(1, 0),
-        Cell(0, -1)
-    )
-
-    val NORTH = 0
-    val EAST = 1
-    val SOUTH = 2
-    val WEST = 3
-
 
     override fun solvePartOne(input: List<String>): String {
         val regions = getRegions(input)
@@ -75,10 +62,6 @@ class Day12(filePath: String) : DaySolver(filePath) {
         return regions
     }
 
-    fun Cell.isOutOfBounds(maxRow: Int, maxCol: Int): Boolean {
-        return this.first < 0 || this.first >= maxRow || this.second < 0 || this.second >= maxCol
-    }
-
     fun Region.getArea(): Int {
         return this.size
     }
@@ -134,8 +117,7 @@ class Day12(filePath: String) : DaySolver(filePath) {
                 }
                 visited.add(fence)
                 val cell = fence.first
-                val fenceDirection = fence.second
-                when (fenceDirection) {
+                when (val fenceDirection = fence.second) {
                     NORTH -> {
                         // check if we can move right
                         val right = cell.add(directions[EAST])
