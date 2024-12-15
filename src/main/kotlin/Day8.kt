@@ -59,16 +59,8 @@ class Day8(filePath: String) : DaySolver(filePath) {
         return antinodes
     }
 
-    fun Cell.isOutOfBounds(maxRow: Int, maxCol: Int): Boolean {
-        return this.first < 0 || this.first >= maxRow || this.second < 0 || this.second >= maxCol
-    }
-
     fun Cell.getDistance(other: Cell): Cell {
         return Cell(other.first - this.first, other.second - this.second)
-    }
-
-    fun Cell.add(other: Cell): Cell {
-        return Cell(this.first + other.first, this.second + other.second)
     }
 }
 

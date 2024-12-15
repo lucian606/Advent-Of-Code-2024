@@ -1,7 +1,3 @@
-fun Cell.add(other: Cell): Cell {
-    return Cell(this.first + other.first, this.second + other.second)
-}
-
 class Robot(var position: Cell,
             val velocity: Cell,
             val gridWidth: Int,

@@ -79,10 +79,6 @@ class Day12(filePath: String) : DaySolver(filePath) {
         return this.first < 0 || this.first >= maxRow || this.second < 0 || this.second >= maxCol
     }
 
-    fun Cell.add(other: Cell): Cell {
-        return Cell(this.first + other.first, this.second + other.second)
-    }
-
     fun Region.getArea(): Int {
         return this.size
     }
