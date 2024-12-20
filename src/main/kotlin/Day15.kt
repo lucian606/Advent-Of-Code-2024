@@ -75,7 +75,7 @@ class Day15(filePath: String) : DaySolver(filePath) {
 
         if (warehouseMap[newRow][newCol] == '.') {
             warehouseMap[newRow][newCol] = 'O'
-            warehouseMap[postion.first][postion.second] = '.'
+            warehouseMap[postion.row][postion.col] = '.'
             return true
         } else if (warehouseMap[newRow][newCol] == '#') {
             return false
@@ -83,7 +83,7 @@ class Day15(filePath: String) : DaySolver(filePath) {
             val wasNeighbourBoxMoved = moveBox(warehouseMap, direction, Cell(newRow, newCol))
             return if (wasNeighbourBoxMoved) {
                 warehouseMap[newRow][newCol] = 'O'
-                warehouseMap[postion.first][postion.second] = '.'
+                warehouseMap[postion.row][postion.col] = '.'
                 true
             } else {
                 false
@@ -98,7 +98,7 @@ class Day15(filePath: String) : DaySolver(filePath) {
 
         if (warehouseMap[newRow][newCol] == '.') {
             warehouseMap[newRow][newCol] = '@'
-            warehouseMap[position.first][position.second] = '.'
+            warehouseMap[position.row][position.col] = '.'
             return Cell(newRow, newCol)
         } else if (warehouseMap[newRow][newCol] == '#') {
             return position
@@ -106,7 +106,7 @@ class Day15(filePath: String) : DaySolver(filePath) {
             val wasNeighbourBoxMoved = moveBox(warehouseMap, direction, Cell(newRow, newCol))
             return if (wasNeighbourBoxMoved) {
                 warehouseMap[newRow][newCol] = '@'
-                warehouseMap[position.first][position.second] = '.'
+                warehouseMap[position.row][position.col] = '.'
                 Cell(newRow, newCol)
             } else {
                 position
@@ -272,7 +272,7 @@ class Day15(filePath: String) : DaySolver(filePath) {
 
         if (warehouseMap[newRow][newCol] == '.') {
             warehouseMap[newRow][newCol] = '@'
-            warehouseMap[position.first][position.second] = '.'
+            warehouseMap[position.row][position.col] = '.'
             return Cell(newRow, newCol)
         } else if (warehouseMap[newRow][newCol] == '#') {
             return position
@@ -280,7 +280,7 @@ class Day15(filePath: String) : DaySolver(filePath) {
             val wasNeighbourBoxMoved = moveBigBox(warehouseMap, direction, Cell(newRow, newCol))
             return if (wasNeighbourBoxMoved) {
                 warehouseMap[newRow][newCol] = '@'
-                warehouseMap[position.first][position.second] = '.'
+                warehouseMap[position.row][position.col] = '.'
                 Cell(newRow, newCol)
             } else {
                 position
@@ -289,7 +289,7 @@ class Day15(filePath: String) : DaySolver(filePath) {
             val wasNeighbourBoxMoved = moveBigBox(warehouseMap, direction, Cell(newRow, newCol - 1))
             return if (wasNeighbourBoxMoved) {
                 warehouseMap[newRow][newCol] = '@'
-                warehouseMap[position.first][position.second] = '.'
+                warehouseMap[position.row][position.col] = '.'
                 Cell(newRow, newCol)
             } else {
                 position

@@ -29,6 +29,7 @@ class Day18(filePath: String) : DaySolver(filePath) {
         val visited = mutableSetOf<Cell>()
         val queue: Queue<PathList> = LinkedList()
         queue.add(PathList(Cell(0, 0), listOf(Cell(0, 0))))
+
         while (queue.isNotEmpty()) {
             val (cell, path) = queue.poll()
 
@@ -38,7 +39,9 @@ class Day18(filePath: String) : DaySolver(filePath) {
             if (cell in visited) {
                 continue
             }
+
             visited.add(cell)
+
             for (direction in directions) {
                 val neighbour = cell.add(direction)
                 if (neighbour !in visited && neighbour !in fallingBytes && !neighbour.isOutOfBounds(N, N)) {

@@ -37,7 +37,7 @@ class Day8(filePath: String) : DaySolver(filePath) {
             for (i in antennasList.indices) {
                 for (j in antennasList.indices) {
                     if (i != j) {
-                        val distance = antennasList[i].getDistance(antennasList[j])
+                        val distance = antennasList[i].getDistanceAsCell(antennasList[j])
                         var antinode = antennasList[i].add(distance)
 
                         if (harmonicSignal) {
@@ -57,10 +57,6 @@ class Day8(filePath: String) : DaySolver(filePath) {
         }
 
         return antinodes
-    }
-
-    fun Cell.getDistance(other: Cell): Cell {
-        return Cell(other.first - this.first, other.second - this.second)
     }
 }
 

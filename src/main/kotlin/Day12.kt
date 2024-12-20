@@ -22,7 +22,7 @@ class Day12(filePath: String) : DaySolver(filePath) {
     fun getRegion(input: List<String>, start: Cell): Region {
         val region = mutableSetOf<Cell>()
         val queue = LinkedList<Cell>()
-        val regionType = input[start.first][start.second]
+        val regionType = input[start.row][start.col]
         queue.add(start)
         while (queue.isNotEmpty()) {
             val cell = queue.pop()
@@ -34,7 +34,7 @@ class Day12(filePath: String) : DaySolver(filePath) {
                 val neighbour = cell.add(direction)
                 if (
                     !neighbour.isOutOfBounds(input.size, input[0].length) &&
-                    input[neighbour.first][neighbour.second] == regionType
+                    input[neighbour.row][neighbour.col] == regionType
                 ) {
                     queue.add(neighbour)
                 }

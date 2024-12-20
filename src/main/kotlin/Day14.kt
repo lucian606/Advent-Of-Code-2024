@@ -38,7 +38,7 @@ class Day14(filePath: String) : DaySolver(filePath) {
             val position = convertStringToNumberList(positionStr,",").map{ it.toInt() }.zipWithNext()[0]
             val velocity = convertStringToNumberList(velocityStr,",").map{ it.toInt() }.zipWithNext()[0]
 
-            robots.add(Robot(position, velocity, gridWidth, gridHeight))
+            robots.add(Robot(Cell(position.first, position.second), Cell(velocity.first, velocity.second), gridWidth, gridHeight))
         }
         return robots
     }
@@ -47,18 +47,18 @@ class Day14(filePath: String) : DaySolver(filePath) {
         val midX = gridWidth / 2
         val midY = gridHeight / 2
 
-        val robotsInQuadrants = robots.filterNot { it.position.first == midX || it.position.second == midY }
+        val robotsInQuadrants = robots.filterNot { it.position.row == midX || it.position.col == midY }
         val quadrants = mutableListOf(0, 0, 0, 0)
 
         for (robot in robotsInQuadrants) {
             val position = robot.position
-            if (position.first < midX && position.second < midY) {
+            if (position.row < midX && position.col < midY) {
                 quadrants[0]++
-            } else if(position.first > midX && position.second < midY) {
+            } else if(position.row > midX && position.col < midY) {
                 quadrants[1]++
-            } else if(position.first < midX && position.second > midY) {
+            } else if(position.row < midX && position.col > midY) {
                 quadrants[2]++
-            } else if(position.first > midX && position.second > midY) {
+            } else if(position.row > midX && position.col > midY) {
                 quadrants[3]++
             }
         }
@@ -73,7 +73,7 @@ class Day14(filePath: String) : DaySolver(filePath) {
             var rowString = ""
             val linedUp = "########"
             for (col in 0 until gridWidth) {
-                if (robots.any { it.position.first == col && it.position.second == row }) {
+                if (robots.any { it.position.row == col && it.position.col == row }) {
                     rowString += "#"
                 } else {
                     rowString += "."
@@ -94,7 +94,7 @@ class Day14(filePath: String) : DaySolver(filePath) {
     fun printGrid(robots: List<Robot>, gridWidth: Int, gridHeight: Int) {
         for (row in 0 until gridHeight) {
             for (col in 0 until gridWidth) {
-                if (robots.any { it.position.first == col && it.position.second == row }) {
+                if (robots.any { it.position.row == col && it.position.col == row }) {
                     print("#")
                 } else {
                     print(".")

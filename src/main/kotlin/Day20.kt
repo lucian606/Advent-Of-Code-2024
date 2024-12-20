@@ -38,10 +38,10 @@ class Day20(filePath: String) : DaySolver(filePath) {
 
             for (direction in directions) {
                 val pathCopy = path.toMutableList()
-                val (neighRow, neighCol) = cell.add(direction)
-                if (input[neighRow][neighCol] != '#') {
-                    pathCopy.add(Cell(neighRow, neighCol))
-                    queue.add(Pair(Cell(neighRow, neighCol), pathCopy))
+                val neighbour = cell.add(direction)
+                if (input[neighbour.row][neighbour.col] != '#') {
+                    pathCopy.add(Cell(neighbour.row, neighbour.col))
+                    queue.add(Pair(Cell(neighbour.row, neighbour.col), pathCopy))
                 }
             }
         }

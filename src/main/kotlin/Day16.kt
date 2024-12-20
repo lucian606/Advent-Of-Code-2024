@@ -42,15 +42,15 @@ class Day16(filePath: String) : DaySolver(filePath) {
             }
 
             for (direction in directions.indices) {
-                val (neighRow, neighCol) = cell.add(directions[direction])
+                val neighbour = cell.add(directions[direction])
                 var visitingCost = cost + 1
                 if (direction != currentDirection) {
                     visitingCost += 1000
                 }
-                if (input[neighRow][neighCol] != '#') {
-                    val neighbourCost = cellCosts.getOrDefault(Cell(neighRow, neighCol), Int.MAX_VALUE)
+                if (input[neighbour.row][neighbour.col] != '#') {
+                    val neighbourCost = cellCosts.getOrDefault(Cell(neighbour.row, neighbour.col), Int.MAX_VALUE)
                     if (visitingCost <= neighbourCost) {
-                        queue.add(CellPath(Cell(neighRow, neighCol), direction, visitingCost))
+                        queue.add(CellPath(Cell(neighbour.row, neighbour.col), direction, visitingCost))
                     }
                 }
             }

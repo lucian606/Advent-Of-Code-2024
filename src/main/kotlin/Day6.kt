@@ -31,9 +31,9 @@ class Day6(filePath: String) : DaySolver(filePath) {
             val currentCell = currentPosition.cell
             val currentDirection = currentPosition.directionIndex
 
-            val nextCell = currentCell.getNext(directions[currentDirection])
-            val nextRow = nextCell.first
-            val nextCol = nextCell.second
+            val nextCell = currentCell.add(directions[currentDirection])
+            val nextRow = nextCell.row
+            val nextCol = nextCell.col
 
             if (isOutOfBounds(nextRow, nextCol, input.size, input[0].length)) {
                 finishedPattern = true
@@ -51,21 +51,14 @@ class Day6(filePath: String) : DaySolver(filePath) {
         return visited
     }
 
-    fun Cell.getNext(direction: Pair<Int, Int>): Cell {
-        val newRow = first + direction.first
-        val newCol = second + direction.second
-
-        return Cell(newRow, newCol)
-    }
-
     fun isOutOfBounds(row: Int, col: Int, maxRow: Int, maxCol: Int): Boolean {
         return row < 0 || row >= maxRow || col < 0 || col >= maxCol
     }
 
     fun canObstacleCreateLoop(input: List<String>, obstacle: Cell): Boolean {
         val inputWithObstacle = input.mapIndexed { index, row ->
-            if (index == obstacle.first) {
-                row.replaceCharAt(obstacle.second, '#')
+            if (index == obstacle.row) {
+                row.replaceCharAt(obstacle.col, '#')
             } else {
                 row
             }
@@ -88,9 +81,9 @@ class Day6(filePath: String) : DaySolver(filePath) {
             val currentCell = currentPosition.cell
             val currentDirection = currentPosition.directionIndex
 
-            val nextCell = currentCell.getNext(directions[currentDirection])
-            val nextRow = nextCell.first
-            val nextCol = nextCell.second
+            val nextCell = currentCell.add(directions[currentDirection])
+            val nextRow = nextCell.row
+            val nextCol = nextCell.col
 
             if (isOutOfBounds(nextRow, nextCol, input.size, input[0].length)) {
                 finishedPattern = true
