@@ -1,7 +1,5 @@
 import java.util.*
 
-private typealias Path = Pair<Cell, List<Cell>>
-
 class Day18(filePath: String) : DaySolver(filePath) {
 
     val N = 71
@@ -29,8 +27,8 @@ class Day18(filePath: String) : DaySolver(filePath) {
 
     fun getShortestPathToCorner(fallingBytes: Set<Cell>): Int {
         val visited = mutableSetOf<Cell>()
-        val queue: Queue<Path> = LinkedList()
-        queue.add(Path(Cell(0, 0), listOf(Cell(0, 0))))
+        val queue: Queue<PathList> = LinkedList()
+        queue.add(PathList(Cell(0, 0), listOf(Cell(0, 0))))
         while (queue.isNotEmpty()) {
             val (cell, path) = queue.poll()
 
@@ -46,7 +44,7 @@ class Day18(filePath: String) : DaySolver(filePath) {
                 if (neighbour !in visited && neighbour !in fallingBytes && !neighbour.isOutOfBounds(N, N)) {
                     val pathCopy = path.toMutableList()
                     pathCopy.add(neighbour)
-                    queue.add(Path(neighbour, pathCopy))
+                    queue.add(PathList(neighbour, pathCopy))
                 }
             }
         }
